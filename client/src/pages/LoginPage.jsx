@@ -12,10 +12,16 @@ export default function LoginPage() {
       try {
         const res = await api.get(`/auth/magic-login/${token}`);
         localStorage.setItem("user", JSON.stringify(res.data));
-        setMessage("Login successful! Redirecting...");
-        setTimeout(() => navigate("/profile"), 2000);
+        setMessage("Access Granted! Redirecting...");
+
+        // Play sound
+        const audio = new Audio("/success_beep.mp3");
+        audio.play();
+
+        // Redirect after beep
+        setTimeout(() => navigate("/profile"), 1500);
       } catch (err) {
-        setMessage("Login failed. Invalid or expired link.");
+        setMessage("Access Denied. Invalid or expired link.");
       }
     };
     login();
