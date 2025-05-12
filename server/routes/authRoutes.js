@@ -38,7 +38,7 @@ router.post("/request-login", async (req, res) => {
     await user.save();
 
     // const loginLink = `https://privateroom.app/auth/magic-login/${token}`;
-    const loginLink = `${process.env.APP_LINK}/auth/magic-login/${token}`;
+    const loginLink = `${process.env.APP_LINK}/login/${token}`;
 
     // Example email sender (set env vars)
     let transporter = nodemailer.createTransport({
